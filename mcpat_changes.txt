@@ -1,0 +1,3 @@
+mcpat.mk
+cacti/cacti.mk
+g++ -m32 : rm -m32

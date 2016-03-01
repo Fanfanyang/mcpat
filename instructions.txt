@@ -1,0 +1,9 @@
+gem5tomcpat:
+./GEM5ToMcPAT.py stats.txt config.json template-xeon.xml
+
+mcpat:
+./mcpat  -infile ProcessorDescriptionFiles/Alpha21364.xml -print_level architecture > build/result1.txt
+
+the same as: (in build/)
+./GEM5ToMcPAT.py ./stats/stats.txt config.json fan_template.xml 
+./../mcpat/mcpat -infile mcpat-out.xml > results/result1.txt
