@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./GEM5ToMcPAT.py ./stats/stats.txt config.json fan_template0.xml 
+./../mcpat/mcpat -infile mcpat-out.xml > results/result0.txt
+./GEM5ToMcPAT.py ./stats/stats.txt config.json fan_template1.xml 
+./../mcpat/mcpat -infile mcpat-out.xml > results/result1.txt
+./GEM5ToMcPAT.py ./stats/stats.txt config.json fan_template2.xml 
+./../mcpat/mcpat -infile mcpat-out.xml > results/result2.txt
