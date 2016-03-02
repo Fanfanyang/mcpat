@@ -16,7 +16,7 @@ Processor:
   Subthreshold Leakage = 19.5326 W
   Subthreshold Leakage with power gating = 8.23348 W
   Gate Leakage = 0.83164 W
-  Runtime Dynamic = 11.5577 W
+  Runtime Dynamic = 12.8797 W
 
   Total Cores: 1 cores 
   Device Type= ITRS high performance device type
@@ -25,7 +25,7 @@ Processor:
     Subthreshold Leakage = 17.1734 W
     Subthreshold Leakage with power gating = 6.89015 W
     Gate Leakage = 0.812757 W
-    Runtime Dynamic = 11.5576 W
+    Runtime Dynamic = 12.8796 W
 
   Total L2s: 
   Device Type= ITRS high performance device type
@@ -34,7 +34,7 @@ Processor:
     Subthreshold Leakage = 2.35924 W
     Subthreshold Leakage with power gating = 1.34333 W
     Gate Leakage = 0.018883 W
-    Runtime Dynamic = 5.0756e-05 W
+    Runtime Dynamic = 6.5676e-05 W
 
 *****************************************************************************************
 Core:
@@ -43,7 +43,7 @@ Core:
       Subthreshold Leakage = 17.1734 W
       Subthreshold Leakage with power gating = 6.89015 W
       Gate Leakage = 0.812757 W
-      Runtime Dynamic = 11.5576 W
+      Runtime Dynamic = 12.8796 W
 
       Instruction Fetch Unit:
         Area = 7.64014 mm^2
@@ -51,7 +51,7 @@ Core:
         Subthreshold Leakage = 1.86168 W
         Subthreshold Leakage with power gating = 0.772737 W
         Gate Leakage = 0.0796935 W
-        Runtime Dynamic = 1.39416 W
+        Runtime Dynamic = 1.47209 W
 
       Renaming Unit:
         Area = 0.671702 mm^2
@@ -59,7 +59,7 @@ Core:
         Subthreshold Leakage = 0.209842 W
         Subthreshold Leakage with power gating = 0.0840284 W
         Gate Leakage = 0.0231715 W
-        Runtime Dynamic = 1.39876 W
+        Runtime Dynamic = 1.41234 W
 
       Load Store Unit:
         Area = 15.678 mm^2
@@ -67,7 +67,7 @@ Core:
         Subthreshold Leakage = 2.62995 W
         Subthreshold Leakage with power gating = 1.08081 W
         Gate Leakage = 0.125322 W
-        Runtime Dynamic = 2.72542 W
+        Runtime Dynamic = 3.26384 W
 
       Memory Management Unit:
         Area = 0.814186 mm^2
@@ -81,7 +81,7 @@ Core:
         Peak Dynamic = 17.0484 W
         Subthreshold Leakage = 5.81559 W
         Subthreshold Leakage with power gating = 2.31666 W
-        Runtime Dynamic = 5.21547 W
+        Runtime Dynamic = 5.90749 W
 
 *****************************************************************************************
 L2
@@ -90,6 +90,6 @@ L2
       Subthreshold Leakage = 2.35924 W
       Subthreshold Leakage with power gating = 1.34333 W
       Gate Leakage = 0.018883 W
-      Runtime Dynamic = 5.0756e-05 W
+      Runtime Dynamic = 6.5676e-05 W
 
 *****************************************************************************************

@@ -30,9 +30,9 @@
         <param name="virtual_memory_page_size" value="4096"/>
         <!-- address width determines the tag_width in Cache, LSQ and buffers in cache controller
          default value is machine_bits, if not set -->
-        <stat name="total_cycles" value="stats.system.cpu.pmu.numCycles::0"/>
-        <stat name="idle_cycles" value="stats.system.cpu.pmu.idleCycles::0"/>
-        <stat name="busy_cycles"  value="stats.system.cpu.pmu.numCycles::0 - stats.system.cpu.pmu.idleCycles::0"/>
+        <stat name="total_cycles" value="stats.system.cpu.pmu.numCycles::2"/>
+        <stat name="idle_cycles" value="stats.system.cpu.pmu.idleCycles::2"/>
+        <stat name="busy_cycles"  value="stats.system.cpu.pmu.numCycles::2 - stats.system.cpu.pmu.idleCycles::2"/>
         <!--This page size(B) is complete different from the page size in Main memo section. this page size is the size of
          virtual memory from OS/Archi perspective; the page size in Main memo section is the actual physical line in a DRAM bank  -->
         <!-- *********************** cores ******************* -->
@@ -121,54 +121,54 @@
             <param name="RAS_size" value="config.system.cpu.branchPred.RASSize"/>
             <!-- general stats, defines simulation periods;require total, idle, and busy cycles for sanity check  -->
             <!-- please note: if target architecture is X86, then all the instructions refer to (fused) micro-ops -->
-            <stat name="total_instructions" value="stats.system.cpu.pmu.iqInstsIssued::0"/>
-            <stat name="int_instructions" value="stats.system.cpu.pmu.fu_instructions_0::0"/>
-            <stat name="fp_instructions" value="stats.system.cpu.pmu.fu_instructions_0::1"/>
-            <stat name="branch_instructions" value="stats.system.cpu.pmu.branch_instructions_0::0"/>
-            <stat name="branch_mispredictions" value="stats.system.cpu.pmu.branch_instructions_0::1"/>
-            <stat name="load_instructions" value="stats.system.cpu.pmu.fu_instructions_0::2"/>
-            <stat name="store_instructions" value="stats.system.cpu.pmu.fu_instructions_0::3"/>
-            <stat name="committed_instructions" value="stats.system.cpu.pmu.commit_instructions_0::0"/>
-            <stat name="committed_int_instructions" value="stats.system.cpu.pmu.commit_instructions_0::1"/>
-            <stat name="committed_fp_instructions" value="stats.system.cpu.pmu.commit_instructions_0::2"/>
+            <stat name="total_instructions" value="stats.system.cpu.pmu.iqInstsIssued::2"/>
+            <stat name="int_instructions" value="stats.system.cpu.pmu.fu_instructions_2::0"/>
+            <stat name="fp_instructions" value="stats.system.cpu.pmu.fu_instructions_2::1"/>
+            <stat name="branch_instructions" value="stats.system.cpu.pmu.branch_instructions_2::0"/>
+            <stat name="branch_mispredictions" value="stats.system.cpu.pmu.branch_instructions_2::1"/>
+            <stat name="load_instructions" value="stats.system.cpu.pmu.fu_instructions_2::2"/>
+            <stat name="store_instructions" value="stats.system.cpu.pmu.fu_instructions_2::3"/>
+            <stat name="committed_instructions" value="stats.system.cpu.pmu.commit_instructions_2::0"/>
+            <stat name="committed_int_instructions" value="stats.system.cpu.pmu.commit_instructions_2::1"/>
+            <stat name="committed_fp_instructions" value="stats.system.cpu.pmu.commit_instructions_2::2"/>
             <stat name="pipeline_duty_cycle" value="1"/><!--<=1, runtime_ipc/peak_ipc; averaged for all cores if homogeneous -->
             <!-- the following cycle stats are used for heterogeneous cores only,
              please ignore them if homogeneous cores -->
-            <stat name="total_cycles" value="stats.system.cpu.pmu.numCycles::0"/>
-            <stat name="idle_cycles" value="stats.system.cpu.pmu.idleCycles::0"/>
-            <stat name="busy_cycles"  value="stats.system.cpu.pmu.numCycles::0 - stats.system.cpu.pmu.idleCycles::0"/>
+            <stat name="total_cycles" value="stats.system.cpu.pmu.numCycles::2"/>
+            <stat name="idle_cycles" value="stats.system.cpu.pmu.idleCycles::2"/>
+            <stat name="busy_cycles"  value="stats.system.cpu.pmu.numCycles::2 - stats.system.cpu.pmu.idleCycles::2"/>
             <!-- instruction buffer stats -->
             <!-- ROB stats, both RS and Phy based OoOs have ROB
              performance simulator should capture the difference on accesses,
              otherwise, McPAT has to guess based on number of committed instructions. -->
-            <stat name="ROB_reads" value="stats.system.cpu.pmu.robOperation_0::robReads"/>
-            <stat name="ROB_writes" value="stats.system.cpu.pmu.robOperation_0::robWrites"/>
+            <stat name="ROB_reads" value="stats.system.cpu.pmu.robOperation_2::robReads"/>
+            <stat name="ROB_writes" value="stats.system.cpu.pmu.robOperation_2::robWrites"/>
             <!-- RAT accesses -->
-            <stat name="rename_reads" value="stats.system.cpu.pmu.renameReads::0"/> <!--lookup in renaming logic -->
-            <stat name="rename_writes" value="int(stats.system.cpu.pmu.renameOperands * stats.system.cpu.pmu.renameReads::0 / stats.system.cpu.pmu.renameLookups)"/><!--update dest regs. renaming logic -->
-            <stat name="fp_rename_reads" value="stats.system.cpu.pmu.fpReads::0"/>
-            <stat name="fp_rename_writes" value="int(stats.system.cpu.pmu.renameOperands * stats.system.cpu.pmu.fpReads::0 / stats.system.cpu.pmu.renameLookups)"/>
+            <stat name="rename_reads" value="stats.system.cpu.pmu.renameReads::2"/> <!--lookup in renaming logic -->
+            <stat name="rename_writes" value="int(stats.system.cpu.pmu.renameOperands::2 * stats.system.cpu.pmu.renameReads::2 / stats.system.cpu.pmu.renameLookups::2)"/><!--update dest regs. renaming logic -->
+            <stat name="fp_rename_reads" value="stats.system.cpu.pmu.fpReads::2"/>
+            <stat name="fp_rename_writes" value="int(stats.system.cpu.pmu.renameOperands::2 * stats.system.cpu.pmu.fpReads::2 / stats.system.cpu.pmu.renameLookups::2)"/>
             <!-- decode and rename stage use this, should be total ic - nop -->
             <!-- Inst window stats -->
-            <stat name="inst_window_reads" value="stats.system.cpu.pmu.instwindowOperation_0::intRead"/>
-            <stat name="inst_window_writes" value="stats.system.cpu.pmu.instwindowOperation_0::intWrite"/>
-            <stat name="inst_window_wakeup_accesses" value="stats.system.cpu.pmu.instwindowOperation_0::intWake"/>
-            <stat name="fp_inst_window_reads" value="stats.system.cpu.pmu.instwindowOperation_0::floatRead"/>
-            <stat name="fp_inst_window_writes" value="stats.system.cpu.pmu.instwindowOperation_0::floatWrite"/>
-            <stat name="fp_inst_window_wakeup_accesses" value="stats.system.cpu.pmu.instwindowOperation_0::floatWake"/>
+            <stat name="inst_window_reads" value="stats.system.cpu.pmu.instwindowOperation_2::intRead"/>
+            <stat name="inst_window_writes" value="stats.system.cpu.pmu.instwindowOperation_2::intWrite"/>
+            <stat name="inst_window_wakeup_accesses" value="stats.system.cpu.pmu.instwindowOperation_2::intWake"/>
+            <stat name="fp_inst_window_reads" value="stats.system.cpu.pmu.instwindowOperation_2::floatRead"/>
+            <stat name="fp_inst_window_writes" value="stats.system.cpu.pmu.instwindowOperation_2::floatWrite"/>
+            <stat name="fp_inst_window_wakeup_accesses" value="stats.system.cpu.pmu.instwindowOperation_2::floatWake"/>
             <!--  RF accesses -->
-            <stat name="int_regfile_reads" value="stats.system.cpu.pmu.RegfileOperation_0::intRead"/>
-            <stat name="float_regfile_reads" value="stats.system.cpu.pmu.RegfileOperation_0::fpRead"/>
-            <stat name="int_regfile_writes" value="stats.system.cpu.pmu.RegfileOperation_0::intWrite"/>
-            <stat name="float_regfile_writes" value="stats.system.cpu.pmu.RegfileOperation_0::fpWrite"/>
+            <stat name="int_regfile_reads" value="stats.system.cpu.pmu.RegfileOperation_2::intRead"/>
+            <stat name="float_regfile_reads" value="stats.system.cpu.pmu.RegfileOperation_2::fpRead"/>
+            <stat name="int_regfile_writes" value="stats.system.cpu.pmu.RegfileOperation_2::intWrite"/>
+            <stat name="float_regfile_writes" value="stats.system.cpu.pmu.RegfileOperation_2::fpWrite"/>
             <!-- accesses to the working reg -->
-            <stat name="function_calls" value="stats.system.cpu.pmu.functionCalls::0"/>
-            <stat name="context_switches" value="stats.system.cpu.pmu.sysCalls::0"/>
+            <stat name="function_calls" value="stats.system.cpu.pmu.functionCalls::2"/>
+            <stat name="context_switches" value="stats.system.cpu.pmu.sysCalls::2"/>
             <!-- Number of Windows switches (number of function calls and returns)-->
             <!-- Alu stats by default, the processor has one FPU that includes the divider and
              multiplier. The fpu accesses should include accesses to multiplier and divider  -->
-            <stat name="ialu_accesses" value="stats.system.cpu.pmu.AluAccess_0::int"/>
-            <stat name="fpu_accesses" value="stats.system.cpu.pmu.AluAccess_0::fp"/>
+            <stat name="ialu_accesses" value="stats.system.cpu.pmu.AluAccess_2::int"/>
+            <stat name="fpu_accesses" value="stats.system.cpu.pmu.AluAccess_2::fp"/>
             <stat name="mul_accesses" value="0"/>
             <stat name="cdb_alu_accesses" value="0"/>
             <stat name="cdb_mul_accesses" value="0"/>
@@ -226,9 +226,9 @@
                 <!-- cache_policy;//0 no write or write-though with non-write allocate;1 write-back with write-allocate -->
                 <param name="buffer_sizes" value="config.system.cpu.icache.mshrs,config.system.cpu.icache.mshrs,config.system.cpu.icache.mshrs,config.system.cpu.icache.mshrs"/>
                 <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-                <stat name="read_accesses" value="stats.system.cpu.pmu.IcacheAccess_0::access"/>
-                <stat name="read_misses" value="stats.system.cpu.pmu.IcacheAccess_0::miss"/>
-                <stat name="conflicts" value="stats.system.cpu.pmu.IcacheAccess_0::conflict"/>
+                <stat name="read_accesses" value="stats.system.cpu.pmu.IcacheAccess_2::access"/>
+                <stat name="read_misses" value="stats.system.cpu.pmu.IcacheAccess_2::miss"/>
+                <stat name="conflicts" value="stats.system.cpu.pmu.IcacheAccess_2::conflict"/>
             </component>
             <component id="system.core0.dtlb" name="dtlb">
                 <param name="number_entries" value="config.system.cpu.dtb.size"/><!--dual threads-->
@@ -241,19 +241,19 @@
                 <param name="dcache_config" value="config.system.cpu.dcache.size,config.system.cpu.dcache.tags.block_size,config.system.cpu.dcache.assoc,1,1,config.system.cpu.dcache.response_latency,config.system.cpu.dcache.tags.block_size,0"/>
                 <param name="buffer_sizes" value="config.system.cpu.dcache.mshrs,config.system.cpu.dcache.mshrs,config.system.cpu.dcache.mshrs,config.system.cpu.dcache.mshrs"/>
                 <!-- cache controller buffer sizes: miss_buffer_size(MSHR),fill_buffer_size,prefetch_buffer_size,wb_buffer_size-->
-                <stat name="read_accesses" value="stats.system.cpu.dcache.ReadReq_accesses::total"/>
-                <stat name="write_accesses" value="stats.system.cpu.dcache.WriteReq_accesses::total"/>
-                <stat name="read_misses" value="stats.system.cpu.dcache.ReadReq_misses::total"/>
-                <stat name="write_misses" value="stats.system.cpu.dcache.WriteReq_misses::total"/>
-                <stat name="conflicts" value="stats.system.cpu.dcache.tags.replacements"/>
+                <stat name="read_accesses" value="stats.system.cpu.pmu.DcacheAccess_2::read_access"/>
+                <stat name="write_accesses" value="stats.system.cpu.pmu.DcacheAccess_2::write_access"/>
+                <stat name="read_misses" value="stats.system.cpu.pmu.DcacheAccess_2::read_miss"/>
+                <stat name="write_misses" value="int(stats.system.cpu.dcache.WriteReq_miss_rate::total * stats.system.cpu.pmu.DcacheAccess_2::write_access)"/>
+                <stat name="conflicts" value="int((stats.system.cpu.pmu.DcacheAccess_2::read_miss + stats.system.cpu.dcache.WriteReq_miss_rate::total * stats.system.cpu.pmu.DcacheAccess_2::write_access)/2)"/>
             </component>
             <param name="number_of_BTB" value="2"/>
             <component id="system.core0.BTB" name="BTB">
                 <!-- all the buffer related are optional -->
                 <param name="BTB_config" value="5120,4,2,1, 1,3"/> <!--should be 4096 + 1024 -->
                 <!-- the parameters are capacity,block_width,associativity,bank, throughput w.r.t. core clock, latency w.r.t. core clock,-->
-                <stat name="read_accesses" value="stats.system.cpu.branchPred.BTBLookups"/> <!--See IFU code for guideline -->
-                <stat name="write_accesses" value="stats.system.cpu.commit.branches"/>
+                <stat name="read_accesses" value="stats.system.cpu.pmu.branch_instructions_2::0"/> <!--See IFU code for guideline -->
+                <stat name="write_accesses" value="stats.system.cpu.pmu.commit_instructions_2::3"/>
             </component>
         </component>
         <component id="system.L1Directory0" name="L1Directory0">
